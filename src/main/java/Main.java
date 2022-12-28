@@ -19,13 +19,25 @@ public class Main {
         // Navigate to the OLX website
         driver.get("https://www.olx.pl/");
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        WebElement coockiesAccept = driver.findElement(By.xpath("//*[@id=\"onetrust-accept-btn-handler\"]"));
+        coockiesAccept.click();
+
         // Find the search input element and enter the search query
         WebElement searchInput = driver.findElement(By.name("q"));
         searchInput.sendKeys("mario odyssey");
 
         // Find the search button element and click it
-        WebElement searchButton = driver.findElement(By.cssSelector("button[type='submit']"));
+        WebElement searchButton = driver.findElement(By.xpath("//*[@id=\"submit-searchmain\"]"));
         searchButton.click();
+
+
+
 
         // Wait for the search results to load
         try {
@@ -34,8 +46,20 @@ public class Main {
             e.printStackTrace();
         }
 
+        WebElement cheapFilter= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[3]/div/div[3]/div/div/div"));
+        cheapFilter.click();
+
+        WebElement cheapFilter2= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[3]/div/div[3]/div/div/div[2]/div[2]/div[3]"));
+        cheapFilter2.click();
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         // Find the list of search results
-        List<WebElement> searchResults = driver.findElements(By.cssSelector(".wrap > .marginright5 > .link > .marginright5"));
+        List<WebElement> searchResults = driver.findElements(By.className("css-pband8"));
 
         // Click on the first search result
         if (searchResults.size() > 0) {
@@ -45,7 +69,7 @@ public class Main {
         }
 
         // Close the browser
-        driver.quit();
+        //driver.quit();
     }
 
 }
