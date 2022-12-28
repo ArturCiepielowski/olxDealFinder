@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Filter {
 
-    public static void filter(WebDriver driver){
+    public static void searchFilter(WebDriver driver){
 
         try {
             Thread.sleep(1000);
@@ -19,6 +19,11 @@ public class Filter {
         WebElement cheapFilter2= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[3]/div/div[3]/div/div/div[2]/div[2]/div[3]"));
         cheapFilter2.click();
 
+        priceScope(driver);
+
+    }
+
+    public static void priceScope (WebDriver driver){
 
         WebElement lowPrice= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[1]/div/div[2]/div/div[1]/div/div/div/input"));
         lowPrice.sendKeys("100");
@@ -26,5 +31,20 @@ public class Filter {
         WebElement highPrice= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[1]/div/div[2]/div/div[2]/div/div/div/input"));
         highPrice.sendKeys("170");
     }
+
+    public static void auctionName(WebDriver driver, WebElement x){
+        WebElement auctionName= driver.findElement(By.className("css-ervak4-TextStyled"));
+        String auctionNameStr =auctionName.getText();
+        System.out.println(auctionNameStr);
+        if (auctionNameStr.contains("Mario")){
+            x.click();
+        }
+
+    }
+
+
+
+
+
 
 }

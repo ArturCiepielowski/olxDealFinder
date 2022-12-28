@@ -37,14 +37,14 @@ public class Main {
         searchButton.click();
 
 
-Filter.filter(driver);
+        Filter.searchFilter(driver);
 
 
 
 
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -53,12 +53,19 @@ Filter.filter(driver);
         List<WebElement> searchResults = driver.findElements(By.className("css-pband8"));
 
         // Click on the first search result
-        if (searchResults.size() > 0) {
+        /*if (searchResults.size() > 0) {
             searchResults.get(0).click();
         } else {
             System.out.println("No search results found");
+        }*/
+
+        for(WebElement x : searchResults){
+
+            Filter.auctionName(driver,x);
+            System.out.println();
         }
 
+        System.out.println("Finished");
         // Close the browser
         //driver.quit();
     }
