@@ -37,23 +37,14 @@ public class Main {
         searchButton.click();
 
 
+Filter.filter(driver);
 
 
-        // Wait for the search results to load
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
 
-        WebElement cheapFilter= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[3]/div/div[3]/div/div/div"));
-        cheapFilter.click();
 
-        WebElement cheapFilter2= driver.findElement(By.xpath("//*[@id=\"root\"]/div[1]/div[2]/form/div[3]/div[3]/div/div[3]/div/div/div[2]/div[2]/div[3]"));
-        cheapFilter2.click();
 
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
